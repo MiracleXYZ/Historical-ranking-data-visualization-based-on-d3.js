@@ -33,7 +33,7 @@
 
   // 字段的值与其对应的颜色值
   color: {
-    'Chinese': "#17C",
+    Chinese: "#17C"
   },
 
   // 颜色渐变：颜色绑定增长率
@@ -91,8 +91,8 @@
   // 如果看不懂这是在干什么的话，建议不要修改这里。
   // 反格式化函数:
   // 格式化操作可能会导致NaN问题。此函数将格式化后的数值反格式化为JS可以识别的数字。
-  deformat: function (val, postfix) {
-    return Number(val.replace(postfix, "").replace(",", ""))
+  deformat: function(val, postfix) {
+    return Number(val.replace(postfix, "").replace(/\,/g, ""));
   },
   //////////////////////////////////////////////////////////////////////////////
 
@@ -143,11 +143,10 @@
   use_img: true,
 
   // 图片路径，本地图片或者网上图片。
-  // imgs: {
-  //   '条目': 'http://i1.hdslb.com/bfs/face/983034448f81f45f05956d0455a86fe0639d6a36.jpg',
-  // },
-  // 具体设置见_imgs.js，更名为imgs.js即可
-
+  imgs: {
+    条目:
+      "http://i1.hdslb.com/bfs/face/983034448f81f45f05956d0455a86fe0639d6a36.jpg"
+  },
 
   // 全局背景颜色
   background_color: "#FFF",
