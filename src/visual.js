@@ -53,7 +53,7 @@ function draw(data) {
       }
     });
   var baseTime = 3000;
-  
+
   // 选择颜色
   function getColor(d) {
     var r = 0.0;
@@ -115,6 +115,8 @@ function draw(data) {
   var offset = config.offset;
   var animation = config.animation;
   var deformat = config.deformat;
+  config.imgs = Object.assign(config.imgs, external_imgs);
+
   const margin = {
     left: left_margin,
     right: right_margin,
@@ -684,8 +686,7 @@ function draw(data) {
       .select(".barInfo")
       .text(function (d) {
         if (use_type_info) {
-        //   return d[divide_by] + "-" + d.name;
-            return d.name;
+          return d[divide_by] + "-" + d.name;
         }
         return d.name;
       })

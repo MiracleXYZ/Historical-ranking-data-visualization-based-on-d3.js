@@ -1,4 +1,4 @@
-﻿datafifa.js
+datafifa.js
 date.js
 data_最惨.js
 data2.js
@@ -24,4 +24,5 @@ dist/data.csv
 
 src/color_ranges*.js
 src/imgs*.js
+src/config_bak.js
 src/config_bak.js

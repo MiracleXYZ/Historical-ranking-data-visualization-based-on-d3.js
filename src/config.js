@@ -1,9 +1,9 @@
 ﻿const config = {
   // 数据源的编码方式。
   // 默认为UTF-8。
-  // 如果自己创建csv文件且是国内用户，保存的编码很可能是GBK的，如果出现乱码则将这里改成GBK。
+  // 如果是国内用户，且使用旧版Execl处理数据，保存的编码很可能是GBK的，如果出现乱码则将这里改成GBK。
   // 不建议修改这里。而是建议将自己制作完毕的csv文件的内容复制到example.csv中。因为example.csv的编码格式是所有语言都支持的。
-  // Encoding is not recommended to modify.
+  // Encoding is not recommended to be modified.
   // Instead, it is recommended to copy the contents of the CSV file produced by yourself to example.csv.
   // The encoding format of example.csv is supported by all languages.
   encoding: "UTF-8",
@@ -19,25 +19,30 @@
   // 如果关闭，排序顺序为csv表格的时间字段自上而下的出现顺序。
   // 如果你的日期格式为标准的日期格式，则可以无视数据排序，达到自动按照日期顺序排序的效果。
   // 开启auto_sort可以实现时间的自动补间。
-  auto_sort: true,
-  timeFormat : "%Y-%m-%d",
+  // Auto Sort by Time
+  // Please ensure using standard datetime format (YYYY-MM-DD HH:MM) when this term is enabled!!!
+  auto_sort: false,
+
+  // 时间格式化
+  timeFormat: "%Y-%m-%d",
 
   // 倒序，使得最短的条位于最上方
   reverse: false,
 
   // 类型根据什么字段区分？如果是name，则关闭类型显示
-  divide_by: 'name',
+  divide_by: 'type',
 
   // 颜色根据什么字段区分？
-  divide_color_by: 'type',
+  divide_color_by: 'name',
 
   // 字段的值与其对应的颜色值
   color: {
-    Chinese: "#17C"
+    "Chinese": "#1177CC",
+    "Japanese": "#667788"
   },
 
   // 颜色渐变：颜色绑定增长率
-  changeable_color: true,
+  changeable_color: false,
 
   // 添加功能：不同类型的增长率所用渐变色不同(暗→亮)
   // 如果该项为false，那么所有条目全部按照color_range变色
@@ -53,8 +58,11 @@
 
   // right label
   typeLabel: "右侧文字",
+
+
   // 榜首项目信息的水平位置 。
-  item_x: 400,
+  // Top item information horizontal location
+  item_x: 250,
 
   // 时间点间隔时间。
   interval_time: 1,
@@ -68,6 +76,7 @@
   offset: 350,
 
   // 长度小于display_barInfo的bar将不显示barInfo。
+  // Hide barInfo if bar is shorter than barInfo
   display_barInfo: 0,
 
   // 使用计数器
@@ -82,7 +91,7 @@
   // 格式化数值
   // 这里控制着数值的显示位数。主要靠修改中间的数字完成，如果为1则为保留一位小数。
   // 逗号表示每隔三位数用","分割
-  // '.2f' mains keep two decimals.
+  // '.2f' means keeping two decimals.
   format: ",.0f",
 
   // 后缀
@@ -91,7 +100,7 @@
   // 如果看不懂这是在干什么的话，建议不要修改这里。
   // 反格式化函数:
   // 格式化操作可能会导致NaN问题。此函数将格式化后的数值反格式化为JS可以识别的数字。
-  deformat: function(val, postfix) {
+  deformat: function (val, postfix) {
     return Number(val.replace(postfix, "").replace(/\,/g, ""));
   },
   //////////////////////////////////////////////////////////////////////////////
@@ -113,7 +122,7 @@
   allow_up: false,
 
   // 所有条目上浮 - 用于反向排行榜等情况
-  always_up: false, 
+  always_up: false,
 
   // 设置动画效果，如果为true，则新进入的条目从0开始。
   enter_from_0: true,
@@ -143,13 +152,14 @@
   use_img: true,
 
   // 图片路径，本地图片或者网上图片。
+  // 也可在imgs.js中配置。
   imgs: {
-    条目:
-      "http://i1.hdslb.com/bfs/face/983034448f81f45f05956d0455a86fe0639d6a36.jpg"
+    "条目": "http://i1.hdslb.com/bfs/face/983034448f81f45f05956d0455a86fe0639d6a36.jpg",
+    "任意名称": "path/to/img"
   },
 
   // 全局背景颜色
-  background_color: "#FFF",
+  background_color: "#FFFFFF",
 
   // 矩形柱是否为圆角矩形
   rounded_rectangle: true,
