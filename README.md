@@ -70,6 +70,7 @@
 ## 2019-06-09
 
 - 增加在右下角显示infocard（信息卡片）的功能，并支持在不同日期显示不同卡片。--BY [MiracleXYZ](https://github.com/MiracleXYZ)
+- 修复了在counter（计数器）中数字格式不当的bug。
 
 ## 2019-04-16
 
