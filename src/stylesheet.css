@@ -82,6 +82,20 @@ input {
     font-family: "Fira Code", "Source Han Sans CN"
 }
 
+.infoCardTitle {
+    fill: #5C5C5C;
+    font-weight: bold;
+    font-size: 32pt;
+    font-family: "Fira Code", "Source Han Sans CN";
+}
+
+.infoCardCaption {
+    fill: #5C5C5C;
+    font-weight: semibold;
+    font-size: 28pt;
+    font-family: "Fira Code", "Source Han Sans CN";
+}
+
 .barInfo {
     fill: #FFFFFF;
     font-weight: 800;

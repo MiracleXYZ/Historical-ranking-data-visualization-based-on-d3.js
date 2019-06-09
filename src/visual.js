@@ -116,6 +116,9 @@ function draw(data) {
   var animation = config.animation;
   var deformat = config.deformat;
   config.imgs = Object.assign(config.imgs, external_imgs);
+  var use_info_card = config.use_info_card;
+  var info_card_title = config.info_card_title;
+  var info_card = config.info_card;
 
   const margin = {
     left: left_margin,
@@ -213,6 +216,49 @@ function draw(data) {
       return "end";
     })
     .text(currentdate);
+
+  if (use_info_card) {
+    var currentInfoCard = (currentdate in info_card) ? info_card[currentdate] : {"image": "", "caption1": "", "caption2": ""};
+    var currentInfoCardTitle = "";
+    if (currentInfoCard.caption1 || currentInfoCard.caption2) {
+      currentInfoCardTitle = info_card_title;
+    }
+
+    var infoCardTitle = g
+      .insert("text")
+      .attr("class", "infoCardTitle")
+      .attr("style:visibility", dateLabel_switch)
+      .attr("x", 1070)
+      .attr("y", 340)
+      .text(currentInfoCardTitle);
+  
+    var infoCardImage = g
+      .insert("svg:image")
+      .attr("class", "infoCard")
+      .attr("style:visibility", dateLabel_switch)
+      .attr("x", 1050)
+      .attr("y", 360)
+      .attr("width", 480)
+      .attr("height", 270)
+      .attr("xlink:href", currentInfoCard.image);
+    
+    var infoCardCaption1 = g
+      .insert("text")
+      .attr("class", "infoCardCaption")
+      .attr("style:visibility", dateLabel_switch)
+      .attr("x", 1070)
+      .attr("y", 680)
+      .text(currentInfoCard.caption1);
+
+    var infoCardCaption2 = g
+      .insert("text")
+      .attr("class", "infoCardCaption")
+      .attr("style:visibility", dateLabel_switch)
+      .attr("x", 1070)
+      .attr("y", 725)
+      .text(currentInfoCard.caption2);
+  }
+
 
   var topLabel = g
     .insert("text")
@@ -386,6 +432,21 @@ function draw(data) {
       dateLabel.text(currentdate);
     }
 
+    if (use_info_card) {
+      var currentInfoCard = (currentdate in info_card) ? info_card[currentdate] : {"image": "", "caption": ""};
+      if (!(currentInfoCard.caption1 || currentInfoCard.caption2)) {
+        infoCardTitle.text("");
+      }
+      else {
+        infoCardTitle.text(info_card_title);
+      }
+      
+      infoCardImage.attr("xlink:href", currentInfoCard.image);
+      infoCardCaption1.text(currentInfoCard.caption1);
+      infoCardCaption2.text(currentInfoCard.caption2);
+    }
+
+
     xAxisG
       .transition()
       .duration(baseTime * interval_time)
@@ -436,7 +497,7 @@ function draw(data) {
               round = prec.length > 1 ? Math.pow(10, prec[1].length) : 1;
 
             return function (t) {
-              self.textContent = d3.format(format)(
+              self.textContent = d3.format(".0f")(
                 Math.round(i(t) * round) / round
               );
             };

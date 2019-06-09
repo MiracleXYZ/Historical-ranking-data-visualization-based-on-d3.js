@@ -21,7 +21,7 @@
   // 开启auto_sort可以实现时间的自动补间。
   // Auto Sort by Time
   // Please ensure using standard datetime format (YYYY-MM-DD HH:MM) when this term is enabled!!!
-  auto_sort: false,
+  auto_sort: true,
 
   // 时间格式化
   timeFormat: "%Y-%m-%d",
@@ -30,7 +30,7 @@
   reverse: false,
 
   // 类型根据什么字段区分？如果是name，则关闭类型显示
-  divide_by: 'type',
+  divide_by: 'name',
 
   // 颜色根据什么字段区分？
   divide_color_by: 'name',
@@ -49,29 +49,30 @@
   // 如果该项为true，那么按照src/color_ranges.js中的color_ranges变色，默认色板为color_range
   // 一个具体的设置模板见src/_color_ranges.js，将其更名为color_ranges.js再设置即可
   divide_changeable_color_by_type: false,
-  color_range: ['#ff7e5f', '#feb47b'],
+  // color_range: ['#ff7e5f', '#feb47b'],
+  color_range: ['#2980B9', '#6DD5FA'],
 
 
   // 附加信息内容。
   // left label
-  itemLabel: "左侧文字",
+  itemLabel: "当月收益最高",
 
   // right label
-  typeLabel: "右侧文字",
+  typeLabel: "",
 
 
   // 榜首项目信息的水平位置 。
   // Top item information horizontal location
-  item_x: 250,
+  item_x: 400,
 
   // 时间点间隔时间。
-  interval_time: 1,
+  interval_time: 5,
 
   // 上方文字水平高度。
   text_y: -50,
 
   // 右侧文字横坐标
-  text_x: 1000,
+  text_x: 1100,
   // 偏移量
   offset: 350,
 
@@ -82,7 +83,7 @@
   // 使用计数器
   // 注意！使用计时器和使用类型目前不能兼容，即不能同时开启！
   // 计数器会出现在右上角，记录着当前榜首的持续时间。
-  use_counter: false,
+  use_counter: true,
   // 每个时间节点对于计数器的步长。
   // 比如时间节点日期的间隔可能为1周（七天），那么step的值就应该为7。
   step: 1,
@@ -92,7 +93,7 @@
   // 这里控制着数值的显示位数。主要靠修改中间的数字完成，如果为1则为保留一位小数。
   // 逗号表示每隔三位数用","分割
   // '.2f' means keeping two decimals.
-  format: ",.0f",
+  format: ",.2f",
 
   // 后缀
   postfix: "",
@@ -137,7 +138,7 @@
   long: false,
 
   // 延迟多少个时间节点开始
-  wait: 0,
+  wait: 1,
 
   // 单独控制交换动画速度倍率
   update_rate: 1,
@@ -169,5 +170,11 @@
 
   // 限制bar info 展示的长度
   // limit bar info display length
-  bar_name_max: 30
+  bar_name_max: 100,
+
+  // 显示信息卡片
+  use_info_card: true,
+  // 更多设置详见info_card.js
+
+
 };
